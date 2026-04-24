@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hivon Blog Platform
 
-## Getting Started
+A premium, AI-powered blogging platform built for Hivon Automations. This system features automated 200-word summaries using Google Gemini, robust role-based access control, and a Figma-inspired monochrome design.
 
-First, run the development server:
+## 🚀 Tech Stack
+- **Frontend**: Next.js 14/15 (App Router)
+- **Styling**: Vanilla CSS (Figma Design System)
+- **Database/Auth**: Supabase
+- **AI Engine**: Google Gemini 1.5 Flash
+- **Deployment**: Vercel
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Features
+- **AI Summarization**: Every post automatically generates and stores a ~200-word summary on creation.
+- **RBAC (Role Based Access Control)**:
+  - **Viewer**: Read posts, view AI summaries, leave comments.
+  - **Author**: Create/Edit own posts, monitor discussion.
+  - **Admin**: Full authority to edit any post or moderate content.
+- **Search & Pagination**: High-performance post discovery.
+- **Modern UI**: Strictly monochrome chrome with vibrant hero accents and variable typography.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📦 Local Setup Instructions
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd Blog
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Configure Environment Variables:**
+   Create a `.env.local` file in the root and add your keys:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   GOOGLE_AI_API_KEY=your_gemini_api_key
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Database Setup:**
+   Run the SQL schema provided in `.gsd/templates/schema.sql` within your Supabase SQL Editor to create the necessary tables and RLS policies.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Run locally:**
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏗️ Architectural Decisions
 
-## Deploy on Vercel
+### AI Summary Strategy
+We utilize **Gemini 1.5 Flash** for summarization due to its high speed and accuracy. Summaries are generated **once** during post creation/update and stored in the database. This optimizes cost by avoiding redundant API calls during feed browsing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Database Design
+The schema utilizes Supabase's built-in Auth system extended by a `profiles` table. Row Level Security (RLS) is strictly enforced at the database layer to ensure Authors cannot modify others' work and Viewers remain read-only.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Design System
+Inspired by Figma's interface, we used a strictly monochrome chrome (#000000, #ffffff) to ensure that the content remains the hero. Typography uses **Inter** with negative tracking for a professional tool-like aesthetic.
+
+## 🌐 Deployment
+This project is optimized for **Vercel**. Ensure all environment variables are added to the Vercel project settings before deploying.

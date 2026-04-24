@@ -1,20 +1,19 @@
 # Project State
 
 ## Current Phase
-Phase 2: Core Blog Features (Starting)
+Phase 4: Comments & Roles Polish (In Progress)
 
 ## Completed Tasks
-- [x] Initialized Next.js 14 project with JavaScript and App Router.
-- [x] Configured Figma-inspired design system in `globals.css`.
-- [x] Set up Supabase clients (browser) and Auth logic.
-- [x] Created Google AI utility for automated summaries.
-- [x] Defined Database Schema and RLS policies (SQL template).
-- [x] Built Landing Page and Login/Signup flows.
+- [x] Implemented Server Actions for Post creation with AI Summary.
+- [x] Built Post Listing page with search and pagination support.
+- [x] Implemented Single Post View showing the full content and AI Summary.
+- [x] Built Commenting system (Real-time listing and creation).
+- [x] Integrated Google Gemini 1.5 Flash for summary generation.
 
 ## Blockers
-- User needs to fill in `.env.local` with valid Supabase and Google AI keys for live functionality.
+- None.
 
 ## Next Steps
-- Implement Blog Post Listing page with Pagination.
-- Implement "New Post" page for Authors and Admins.
-- Integrate AI Summary generation inside the post creation logic.
+- Implement Post Editing logic (Admin/Author only).
+- Implement Admin Moderation tools (Delete comments/posts).
+- Finalize README and Deployment.

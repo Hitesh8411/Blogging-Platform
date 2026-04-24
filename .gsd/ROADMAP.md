@@ -1,39 +1,35 @@
 # ROADMAP.md
 
-> **Current Phase**: Phase 2: Core Blog Features
+> **Current Phase**: Phase 4: Comments & Roles Polish
 > **Milestone**: v1.0 - Core Platform
 
 ## Must-Haves (from SPEC)
-- [x] Supabase Auth & RBAC (Foundation)
-- [ ] Blog Post CRUD (Title, Image, Body, Summary)
-- [ ] AI Summary Generation (Google AI API)
-- [ ] Search & Pagination
-- [ ] Commenting System
-- [ ] Figma-inspired UI (Initial implementation)
+- [x] Supabase Auth & RBAC
+- [x] Blog Post CRUD
+- [x] AI Summary Generation (Google AI API)
+- [x] Search & Pagination
+- [x] Commenting System
+- [x] Figma-inspired UI
 
 ## Phases
 
 ### Phase 1: Foundation
 **Status**: ✅ Done
 **Objective**: Project setup, Database schema, and Authentication.
-**Deliverable**: Next.js app with Supabase connection, Auth flows, and Roles logic.
 
 ### Phase 2: Core Blog Features
-**Status**: 🔵 In Progress
+**Status**: ✅ Done
 **Objective**: Implement Post creation, Editing, and Viewing.
-**Deliverable**: Functional CRUD for Authors and Admins; Listing page with Pagination.
 
 ### Phase 3: AI Integration & Search
-**Status**: ⬜ Not Started
+**Status**: ✅ Done
 **Objective**: Automate summary generation and searchable post engine.
-**Deliverable**: Google AI API integration; Summary storage; Search bar functionality.
 
 ### Phase 4: Comments & Roles Polish
-**Status**: ⬜ Not Started
+**Status**: 🔵 In Progress
 **Objective**: Build the commenting system and enforce strict role-based UI states.
 **Deliverable**: Working comments section; Author/Admin dashboard checks.
 
 ### Phase 5: Launch & Documentation
 **Status**: ⬜ Not Started
 **Objective**: Production deployment and technical write-up.
-**Deliverable**: Live Vercel deployment; Complete README with architectural decisions.
