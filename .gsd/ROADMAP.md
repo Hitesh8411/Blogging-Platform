@@ -1,25 +1,25 @@
 # ROADMAP.md
 
-> **Current Phase**: Phase 1: Foundation
+> **Current Phase**: Phase 2: Core Blog Features
 > **Milestone**: v1.0 - Core Platform
 
 ## Must-Haves (from SPEC)
-- [ ] Supabase Auth & RBAC (Admin/Author/Viewer)
+- [x] Supabase Auth & RBAC (Foundation)
 - [ ] Blog Post CRUD (Title, Image, Body, Summary)
 - [ ] AI Summary Generation (Google AI API)
 - [ ] Search & Pagination
 - [ ] Commenting System
-- [ ] Figma-inspired UI
+- [ ] Figma-inspired UI (Initial implementation)
 
 ## Phases
 
 ### Phase 1: Foundation
-**Status**: ⬜ Not Started
+**Status**: ✅ Done
 **Objective**: Project setup, Database schema, and Authentication.
 **Deliverable**: Next.js app with Supabase connection, Auth flows, and Roles logic.
 
 ### Phase 2: Core Blog Features
-**Status**: ⬜ Not Started
+**Status**: 🔵 In Progress
 **Objective**: Implement Post creation, Editing, and Viewing.
 **Deliverable**: Functional CRUD for Authors and Admins; Listing page with Pagination.
 

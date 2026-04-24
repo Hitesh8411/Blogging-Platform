@@ -1,0 +1,101 @@
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --glass-dark: rgba(0, 0, 0, 0.08);
+  --glass-light: rgba(255, 255, 255, 0.16);
+  --primary-gradient: linear-gradient(135deg, #00FF00, #FFFF00, #800080, #FF69B4);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-feature-settings: "kern" 1;
+}
+
+body {
+  line-height: 1.45;
+  letter-spacing: -0.015em; /* Subtle negative tracking as per Figma style */
+}
+
+/* Typography Scale */
+h1 { font-size: 5.38rem; font-weight: 400; line-height: 1.0; letter-spacing: -0.04em; }
+h2 { font-size: 4rem; font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+h3 { font-size: 1.63rem; font-weight: 540; line-height: 1.35; letter-spacing: -0.01em; }
+p { font-size: 1rem; font-weight: 330; line-height: 1.45; margin-bottom: 1rem; }
+
+/* Components */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 50px; /* Pill geometry */
+  font-size: 1rem;
+  font-weight: 480;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.button-primary {
+  background: #000000;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  opacity: 0.9;
+}
+
+.button-secondary {
+  background: var(--glass-dark);
+  color: #000000;
+}
+
+.button-outline {
+  background: transparent;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.button:focus-visible {
+  outline: 2px dashed #000000;
+  outline-offset: 2px;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+/* Mono Labels */
+.label-mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+/* Gradient Hero */
+.hero-gradient {
+  background: var(--primary-gradient);
+  color: #ffffff;
+}
