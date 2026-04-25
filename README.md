@@ -6,7 +6,7 @@ A premium, AI-powered blogging platform built for Hivon Automations. This system
 - **Frontend**: Next.js 14/15 (App Router)
 - **Styling**: Vanilla CSS (Figma Design System)
 - **Database/Auth**: Supabase
-- **AI Engine**: Google Gemini 1.5 Flash
+- **AI Engine**: Google Gemini 2.5 
 - **Deployment**: Vercel
 
 ## 🛠️ Features

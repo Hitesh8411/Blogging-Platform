@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@/utils/supabase'
+import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
 
 export default function LoginPage() {
@@ -39,7 +39,6 @@ export default function LoginPage() {
   return (
     <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--glass-dark)' }}>
       <div style={{ background: '#ffffff', padding: '3rem', borderRadius: '12px', width: '100%', maxWidth: '400px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-        <Link href="/" className="label-mono" style={{ marginBottom: '2rem', display: 'block' }}>← Back to home</Link>
         <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Login or Join</h2>
         
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

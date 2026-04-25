@@ -1,28 +1,33 @@
 import Link from 'next/link';
+import { createClient } from '@/utils/supabase/server';
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  let isAdmin = false;
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+    if (profile?.role === 'Admin') isAdmin = true;
+  }
+
   return (
     <main>
-      {/* Navigation */}
-      <nav className="container" style={{ padding: '2rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ fontWeight: 700, fontSize: '1.25rem' }}>HIVON.</div>
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-          <Link href="/blog" className="label-mono">Blog</Link>
-          <Link href="/login" className="button button-primary">Login</Link>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="hero-gradient section" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
-          <div className="label-mono" style={{ marginBottom: '1rem', color: 'rgba(255,255,255,0.8)' }}>AI-Powered Blogging</div>
+          <div className="label-mono" style={{ marginBottom: '1.5rem', display: 'inline-block', background: 'transparent', color: '#000', padding: '0.4rem 1.4rem', borderRadius: '50px', border: '2px solid #000', fontWeight: '800' }}>AI-Powered Blogging</div>
           <h1>Write. Summary. Elevate.</h1>
-          <p style={{ maxWidth: '600px', fontSize: '1.25rem', marginTop: '1.5rem', color: 'rgba(255,255,255,0.9)' }}>
+          <p style={{ maxWidth: '600px', fontSize: '1.25rem', marginTop: '1.5rem' }}>
             The next generation of content sharing. Automatically generate high-quality summaries with Google AI and manage your community with robust role-based controls.
           </p>
           <div style={{ marginTop: '3rem', display: 'flex', gap: '1rem' }}>
-            <Link href="/blog" className="button" style={{ background: '#ffffff', color: '#000000' }}>Explore Feed</Link>
-            <Link href="/login" className="button button-outline" style={{ borderColor: '#ffffff', color: '#ffffff' }}>Get Started</Link>
+            <Link href="/blog" className="button button-white">Explore Feed</Link>
+            <Link href="/login" className="button button-glass">Get Started</Link>
           </div>
         </div>
       </section>

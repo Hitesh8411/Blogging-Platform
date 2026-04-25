@@ -1,12 +1,12 @@
 'use server'
 
-import { createClient } from '@/utils/supabase'
+import { createClient } from '@/utils/supabase/server'
 import { generateSummary } from '@/lib/google-ai'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export async function createPost(formData) {
-  const supabase = createClient()
+  const supabase = await createClient()
   
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Unauthorized')
@@ -29,7 +29,7 @@ export async function createPost(formData) {
 }
 
 export async function updatePost(id, formData) {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error('Unauthorized')
 
@@ -54,7 +54,7 @@ export async function updatePost(id, formData) {
 }
 
 export async function deletePost(id) {
-    const supabase = createClient()
+    const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) throw new Error('Unauthorized')
 

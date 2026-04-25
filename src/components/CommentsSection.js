@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@/utils/supabase'
+import { createClient } from '@/utils/supabase/client'
 
 export default function CommentsSection({ postId, initialComments, user }) {
   const [comments, setComments] = useState(initialComments || [])

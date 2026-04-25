@@ -1,25 +1,12 @@
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { createClient } from '@/utils/supabase/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import CommentsSection from '@/components/CommentsSection'
 import { deletePost } from '@/actions/posts'
 
 export default async function PostDetail({ params }) {
-  const { id } = params
-  
-  const cookieStore = cookies()
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name) {
-          return cookieStore.get(name)?.value
-        },
-      },
-    }
-  )
+  const { id } = await params
+  const supabase = await createClient()
 
   const { data: post, error } = await supabase
     .from('posts')
@@ -76,7 +63,7 @@ export default async function PostDetail({ params }) {
 
         {post.summary && (
           <div style={{ background: 'var(--glass-dark)', padding: '2rem', borderRadius: '12px', marginBottom: '3rem', borderLeft: '4px solid #000' }}>
-            <p className="label-mono" style={{ fontSize: '0.8rem', marginBottom: '1rem', fontWeight: 700 }}>AI GENERATED SUMMARY</p>
+            <p className="label-mono" style={{ fontSize: '0.8rem', marginBottom: '1rem', fontWeight: 700 }}>💡 AI Insight</p>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.6, fontStyle: 'italic', color: '#333' }}>{post.summary}</p>
           </div>
         )}

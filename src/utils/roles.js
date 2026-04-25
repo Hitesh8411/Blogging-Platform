@@ -1,7 +1,7 @@
-import { createClient } from '@/utils/supabase'
+import { createClient } from '@/utils/supabase/server'
 
 export async function getUserRole() {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
 

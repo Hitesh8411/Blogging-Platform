@@ -1,23 +1,11 @@
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { createClient } from '@/utils/supabase/server'
 import { updatePost } from '@/actions/posts'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 
 export default async function EditPostPage({ params }) {
-  const { id } = params
-  const cookieStore = cookies()
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name) {
-          return cookieStore.get(name)?.value
-        },
-      },
-    }
-  )
+  const { id } = await params
+  const supabase = await createClient()
 
   const { data: post, error } = await supabase.from('posts').select('*').eq('id', id).single()
   if (error || !post) notFound()
