@@ -24,15 +24,27 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
     const supabase = createClient()
-    const { error } = await supabase.auth.signUp({ 
+    const { data, error } = await supabase.auth.signUp({ 
       email, 
       password,
       options: {
         emailRedirectTo: `${window.location.origin}/auth/callback`,
       }
     })
-    if (error) setMessage(error.message)
-    else setMessage('Check your email for the confirmation link!')
+    
+    if (error) {
+      setMessage(error.message)
+    } else {
+      // Check if email confirmation is required by seeing if a session was created immediately
+      if (data?.session) {
+        setMessage('Signup successful! Redirecting...')
+        setTimeout(() => {
+          window.location.href = '/'
+        }, 1000)
+      } else {
+        setMessage('Signup successful! Please check your email for a confirmation link to activate your account.')
+      }
+    }
     setLoading(false)
   }
 

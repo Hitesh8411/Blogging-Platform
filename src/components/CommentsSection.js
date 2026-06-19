@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import Link from 'next/link'
 
 export default function CommentsSection({ postId, initialComments, user }) {
   const [comments, setComments] = useState(initialComments || [])

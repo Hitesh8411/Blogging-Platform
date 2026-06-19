@@ -27,7 +27,9 @@ export default async function Home() {
           </p>
           <div style={{ marginTop: '3rem', display: 'flex', gap: '1rem' }}>
             <Link href="/blog" className="button button-white">Explore Feed</Link>
-            <Link href="/login" className="button button-glass">Get Started</Link>
+            {!user && (
+              <Link href="/login" className="button button-glass">Get Started</Link>
+            )}
           </div>
         </div>
       </section>
